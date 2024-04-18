@@ -17,9 +17,3 @@ resource "azurerm_ssh_public_key" "main" {
   )
 }
 
-resource "azurerm_key_vault_secret" "private_key" {
-  count = local.store_secret
-  name  = "${var.name}-ssh-key"
-  value = tls_private_key.main.private_key_openssh
-  key_vault_id = var.keyvault
-}
